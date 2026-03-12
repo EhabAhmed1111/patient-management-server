@@ -1,0 +1,39 @@
+services:
+  app:
+    depends_on:
+      - postgres
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/patient_management_db
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: postgres
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+      SPRING_SQL_INIT_MODE: always
+    build: .
+    ports:
+      - target: 4000
+        published: 4000
+#    env_file:
+#      - .env
+    networks:
+      - internal
+
+  postgres:
+    image: postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: patient_management_db
+    ports:
+      - target: 5432 #the port in container
+        published: 5200
+    networks:
+      - internal
+    volumes:
+      - db-volumes:/var/lib/postgresql/data
+
+
+volumes:
+  db-volumes:
+
+networks:
+  internal:

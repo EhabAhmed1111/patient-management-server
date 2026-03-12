@@ -3,6 +3,7 @@ package org.ihab.patientservice.dto;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
+import org.ihab.patientservice.dto.validators.CreatePatientValidationGroup;
 
 public class PatientRequestDTO {
     @NotBlank(message = "Name is mandatory")
@@ -19,7 +20,7 @@ public class PatientRequestDTO {
     @NotBlank(message = "Date of Birth is mandatory")
     private String dateOfBirth;
 
-    @NotBlank(message = "Registered date is mandatory")
+    @NotBlank(groups = CreatePatientValidationGroup.class, message = "Registered date is mandatory")
     private String registeredDate;
 
     public String getRegisteredDate() {
