@@ -1,1 +1,1 @@
-# patient-server
+# patient-management-server
