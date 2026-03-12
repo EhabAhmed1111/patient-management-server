@@ -72,11 +72,11 @@ public class Patient {
         this.dateOfBirth = dateOfBirth;
     }
 
-    public LocalDate getRegistrationDate() {
+    public LocalDate getRegisteredDate() {
         return registeredDate;
     }
 
-    public void setRegistrationDate(LocalDate registeredDate) {
+    public void setRegisteredDate(LocalDate registeredDate) {
         this.registeredDate = registeredDate;
     }
 }
