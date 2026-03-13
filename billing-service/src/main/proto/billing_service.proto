@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+// this mean it going to generate multiple file for each request and response
+option java_multiple_files = true;
+
+// this mean it going to generate all code in this package called billing
+option java_package = "billing";
+
+
+service BillingService {
+  // so any service will deal with this service will call any of this method and pass the request and get the response
+    rpc CreateBillingAccount (BillingRequest) returns (BillingResponse);
+//    rpc GetBilling (GetBillingRequest) returns (GetBillingResponse);
+//    rpc UpdateBilling (UpdateBillingRequest) returns (UpdateBillingResponse);
+//    rpc DeleteBilling (DeleteBillingRequest) returns (DeleteBillingResponse);
+}
+
+message BillingRequest {
+  // so this 1 or any number is helping protocol puffer to identify the field and its type when it serialize and deserialize the data
+    string patientId = 1;
+    string name = 2;
+    string email = 3;
+}
+
+message BillingResponse {
+    string accountId = 1;
+    string status = 2;
+}
